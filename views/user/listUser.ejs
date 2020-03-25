@@ -10,6 +10,20 @@
 
 <body>
   <H1>
+    <form>
+      <table>
+        <thead>
+          <tr>Name</tr>
+          <tr>Price</tr>
+        </thead>
+        <tbody>
+          <% list.forEach(el => { %>
+          <td><%= el.name %></td>
+          <td><%= el.price %></td>
+          <% })%>
+        </tbody>
+      </table>
+    </form>
     LIST ITEM FOR USER SETELAH LOGIN SUKSES
   </H1>
 </body>

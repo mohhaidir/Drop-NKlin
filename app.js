@@ -6,11 +6,7 @@ app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: true }))
 
 const routerUser = require('./routers/routerUser')
-app.get('/', (req, res) => {
-  res.render('home')
-})
-
-app.use('/list', routerUser)
+app.use('/', routerUser)
 
 app.listen(port, () => {
   console.log(`PORT: ${port} <--------------> SUCCESSFULLY RUNNING!!`)
