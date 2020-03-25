@@ -1,16 +1,17 @@
 const { Package } = require('../models');
 
 class ControllerList {
-    static findAll(req, res){
+    static findList(req, res){
         Package.findAll()
         .then((result) => {
-            console.log(req.session)
-            res.render('list', {data:result,role:req.role})
+            res.render('listAdmin', {data:result})
         }).catch((err) => {
-            console.log(err)
-            console.log(req.session)
             res.send(err)
         });
+    }
+
+    static formAddPackage(req, res){
+        res.render('formAddPackage', {data:null, error:null});
     }
 }
 module.exports = ControllerList;

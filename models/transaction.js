@@ -10,15 +10,31 @@ module.exports = (sequelize, DataTypes) => {
   Transaction.init({
     dateTransaction: DataTypes.DATEONLY,
     estimateDate: DataTypes.DATEONLY,
-    totalWeight: DataTypes.INTEGER,
+    totalWeight: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {
+          msg: "Berat harus diisi!"
+        }
+      }
+    },
     totalPrice: DataTypes.INTEGER,
     status: DataTypes.STRING,
     UserId: DataTypes.INTEGER,
     PackageId: DataTypes.INTEGER
-  }, {sequelize});
+  }, {
+    sequelize,
+    hooks: {
+      beforeCreate:(model,option) => {
+        model.status = 'On Process'
+      }
+    }
+  });
   
   Transaction.associate = function(models) {
     // associations can be defined here
+    Transaction.belongsTo(models.Users);
+    Transaction.belongsTo(models.Package);
   };
   return Transaction;
 };

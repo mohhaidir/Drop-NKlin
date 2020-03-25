@@ -1,4 +1,4 @@
-const { Users } = require('../models');
+const { Users, Package, Transaction } = require('../models');
 const checkPass = require('../helpers/checkPass');
 class ControllerUser {
     static formlogin(req, res){
@@ -68,6 +68,60 @@ class ControllerUser {
                 })
                 res.render('register', {data:req.body, error})
             });
+    }
+
+    static findPackagesUser(req, res){
+        Package.findAll()
+        .then((result) => {
+            res.render('list', {data:result})
+        }).catch((err) => {
+            res.send(err)
+        });
+    }
+
+    static formOrderUser(req, res){
+        let data = {};
+        Package.findByPk(req.params.id)
+        .then((result) => {
+            data.package = result;
+            return Users.findOne({where:{username:req.session.username}})
+        })
+        .then((result) => {
+            data.user = result;
+            res.render('formOrder', {data, error:null});
+        })
+        .catch((err) => {
+            res.send(err)
+        });
+    }
+
+    static OrderUser(req, res){
+        Transaction.create({
+            dateTransaction: req.body.dateTransaction,
+            estimateDate: req.body.estimateDate,
+            totalWeight: req.body.totalWeight,
+            totalPrice: req.body.totalPrice,
+            UserId: req.body.UserId,
+            PackageId: req.body.PackageId
+        })
+        .then(result => {
+            res.redirect('/myorder');
+        })
+        .catch(err => {
+            res.send(err);
+        })
+    }
+
+    static MyOrder(req, res){
+        Users.findOne({where:{username:req.session.username}})
+        .then((result) => {
+            return Transaction.findAll({where:{UserId:result.id}, include: [Package, Users]})
+        })
+        .then((result) => {
+            res.render('myorder', {data:result})
+        }).catch((err) => {
+            res.send(err)
+        });
     }
 }
 

@@ -7,30 +7,20 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>List</title>
 </head>
-<ul>
-  <a href="/">
-    <li>home</li>
-  </a>
-  <% if(role){ %> 
-    <a href="/packages">
-      <li>Packages</li>
-    </a>
-    <a href="/logout">
-      <li>logout</li>
-    </a>
-  <% } else { %> 
-    <a href="/register">
-      <li>register</li>
-    </a>
-    <a href="/login">
-      <li>login</li>
-    </a>
-  <% } %> 
-</ul>
 <body>
   <h1>List</h1>
-  <%= JSON.stringify(data) %> 
-  <%= JSON.stringify(role) %> 
+  <ul>
+    <li><a href="/">home</a></li>
+    <li><a href="/list">list</a></li>
+    <li><a href="/myorder">myorder</a></li>
+    <li><a href="/logout">logout</a></li>
+  </ul>
+
+  <ol>
+    <% data.forEach(i => { %>
+      <li><a href="/order/<%=i.id%>"><%=i.name%></a></li>
+    <% }) %>
+  </ol>
 </body>
 
 </html>
