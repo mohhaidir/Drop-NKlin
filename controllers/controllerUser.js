@@ -1,6 +1,7 @@
 const { Package, Users } = require('../models')
 
 class ControllerUser {
+
   static listPackage(req, res) {
     Package.findAll()
       .then(result => {
