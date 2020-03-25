@@ -10,10 +10,11 @@ module.exports = (sequelize, DataTypes) => {
   Package.init({
     name: DataTypes.STRING,
     price: DataTypes.INTEGER,
+    duration: DataTypes.INTEGER,
     urlIMG: DataTypes.STRING
-  }, {sequelize});
-  
-  Package.associate = function(models) {
+  }, { sequelize });
+
+  Package.associate = function (models) {
     // associations can be defined here
   };
   return Package;

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const { Users } = require('../models');
 const checkPass = require('../helpers/checkPass');
 class ControllerUser {
@@ -69,6 +70,30 @@ class ControllerUser {
                 res.render('register', {data:req.body, error})
             });
     }
+=======
+const { Package, Users } = require('../models')
+
+class ControllerUser {
+
+  static listPackage(req, res) {
+    Package.findAll()
+      .then(result => {
+        res.render('../views/user/listUser', { item: result })
+      })
+      .catch(error => {
+        res.send(error)
+      })
+  }
+  // <<-- munculin list item, harga (reguler, express, santuy)
+  static cart(req, res) {
+    res.render('../views/user/cart')
+  }
+  // <<-- munculin cart / invoice belanjaan user
+
+  static login(req, res) {
+    res.render('loginForm')
+  }
+>>>>>>> 081eca91a8a8ed534821c19939391ce7c52f45af
 }
 
 module.exports = ControllerUser

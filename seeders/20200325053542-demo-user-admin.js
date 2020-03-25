@@ -32,6 +32,6 @@ module.exports = {
 
       Example:
       return queryInterface.bulkDelete('People', null, {});
-    */
+      */
   }
 };
