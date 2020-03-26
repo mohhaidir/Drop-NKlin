@@ -108,7 +108,7 @@ class ControllerUser {
             res.redirect('/myorder');
         })
         .catch(err => {
-            res.send(err);
+            res.render('formOrder', {data:req.body, error:err});
         })
     }
 

@@ -13,20 +13,18 @@
     <li><a href="/myorder">myorder</a></li>
     <li><a href="/logout">logout</a></li>
   </ul>
-  <%= JSON.stringify(data) %>
-  <%= JSON.stringify(error) %>
   <form action="order/" method="POST">
     <div class="form-group">
       <label for="dateTransaction">Date</label>
-      <input type="text" class="form-control" name="dateTransaction" id="dateTransaction" readonly value="<%= new Date().toISOString().slice(0, 10); %>">
+      <input type="text" class="form-control" name="dateTransaction" id="dateTransaction" readonly value="<%if(error!==null){%><%=data.dateTransaction%><%}else {%><%= new Date().toISOString().slice(0, 10); %><%}%>">
     </div>
     <div class="form-group">
       <label for="estimateDate">Estimate Date</label>
-      <input type="text" class="form-control" name="estimateDate" id="estimateDate" readonly value="<%= new Date(new Date().setDate(new Date().getDate()+data.package.duration)).toISOString().slice(0, 10); %>">
+      <input type="text" class="form-control" name="estimateDate" id="estimateDate" readonly value="<%if(error!==null){%><%=data.estimateDate%><%}else {%><%= new Date(new Date().setDate(new Date().getDate()+data.package.duration)).toISOString().slice(0, 10); %><%}%>">
     </div>
     <div class="form-group">
       <label for="name">Name</label>
-      <input type="text" class="form-control" name="name" value="<%=data.user.name%>" readonly>
+      <input type="text" class="form-control" name="name" value="<%if(error!==null){%><%=data.name%><%}else {%><%=data.user.name%>><%}%>" readonly>
     </div>
     <div class="form-group">
       <label for="package">Package</label>
@@ -45,12 +43,12 @@
       <label for="totalPrice">Total</label>
       <input type="text" class="form-control" name="totalPrice" id="totalPrice" readonly>
     </div>
-    <input type="hidden" class="form-control" name="UserId" value="<%=data.user.id%>">
+    <input type="hidden" class="form-control" name="UserId" value="<%if(error!==null){%><%=data.UserId%><%}else {%><%=data.user.id%><%}%>">
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
   <script>
       function total (berat){
-          document.getElementById("totalPrice").value = berat*<%=data.package.price%>;
+          document.getElementById("totalPrice").value = `${berat*'<%=data.package.price%>'}`;
       }
   </script>
 </body>
