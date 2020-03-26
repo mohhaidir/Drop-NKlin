@@ -113,13 +113,21 @@ class ControllerUser {
     }
 
     static MyOrder(req, res) {
+        let data = null;
+        let id = null;
         Users.findOne({ where: { username: req.session.username } })
             .then((result) => {
-                return Transaction.findAll({ where: { UserId: result.id }, include: [Package, Users] })
+                id = result.id;
+                return Transaction.findAll({ where: { UserId: id , status: 'On Process'}, include: [Package, Users] })
             })
             .then((result) => {
-                res.render('myorder', { data: result })
-            }).catch((err) => {
+                data = result;
+                return Transaction.findAll({ where: { UserId: id , status: 'Done'}, include: [Package, Users] })
+            })
+            .then((result) => {
+                res.render('myorder', { data , data2:result})
+            })
+            .catch((err) => {
                 res.send(err)
             });
     }

@@ -4,7 +4,22 @@ module.exports = (sequelize, DataTypes) => {
   const Model = Sequelize.Model
 
   class Transaction extends Model {
-
+    formatRp(){
+      let str = this.totalPrice.toString();
+      let count = 1;
+      let temp = '';
+      for (let i = str.length; i > 0; i--) {
+          if (i % 3 === 0 && i !== str.length) {
+              temp += '.';
+          }
+          temp += str[count-1];
+          count++;
+      }
+      return `Rp ${temp}`;
+    }
+    formatKg(){
+      return `${this.totalWeight} kg`;
+    }
   }
 
   Transaction.init({

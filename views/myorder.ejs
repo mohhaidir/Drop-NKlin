@@ -40,8 +40,32 @@
                 <td><%=i.dateTransaction%></td>
                 <td><%=i.estimateDate%></td>
                 <td><%=i.Package.name%></td>
-                <td><%=i.totalWeight%></td>
-                <td><%=i.totalPrice%></td>
+                <td><%=i.formatKg()%></td>
+                <td><%=i.formatRp()%></td>
+                <td><%=i.status%></td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <table class="table">
+        <thead class="thead thead-dark">
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Estimate</th>
+                <th scope="col">Package</th>
+                <th scope="col">Weight</th>
+                <th scope="col">Total Price</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data2.forEach(i => { %>
+            <tr>
+                <td><%=i.dateTransaction%></td>
+                <td><%=i.estimateDate%></td>
+                <td><%=i.Package.name%></td>
+                <td><%=i.formatKg()%></td>
+                <td><%=i.formatRp()%></td>
                 <td><%=i.status%></td>
             </tr>
             <% }) %>
