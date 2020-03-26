@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Transaction Admin</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+        .footer {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+            background-color: black;
+            color: lightgray;
+            text-align: center;
+        }
+    </style>
+    <%- include('partials/navbarAdmin')%>
+</head>
+
+<body>
+    <table class="table" border="1">
+        <thead class="thead thead-dark">
+            <tr>
+                <th>Date Transaction</th>
+                <th>Estimate Date</th>
+                <th>Customer</th>
+                <th>Package</th>
+                <th>Total Weight</th>
+                <th>Total Price</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.forEach(i => { %>
+            <tr>
+                <td><%=i.dateTransaction%></td>
+                <td><%=i.estimateDate%></td>
+                <td><%=i.User.name%></td>
+                <td><%=i.Package.name%></td>
+                <td><%=i.totalWeight%></td>
+                <td><%=i.totalPrice%></td>
+                <td><%=i.status%></td>
+                <td>
+                    <a href="/admin/<%=i.id%>/status"><button class="btn btn-dark">Done</button></a>
+                </td>
+            </tr>
+            <%})%>
+        </tbody>
+    </table>
+    <div style="text-align: center; margin-top: 150px">
+        <h3> Done List Transaction </h3>
+    </div>
+    <table class="table" border="1">
+        <thead class="thead thead-dark">
+            <tr>
+                <th>Date Transaction</th>
+                <th>Estimate Date</th>
+                <th>Customer</th>
+                <th>Package</th>
+                <th>Total Weight</th>
+                <th>Total Price</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data2.forEach(i => { %>
+            <tr>
+                <td><%=i.dateTransaction%></td>
+                <td><%=i.estimateDate%></td>
+                <td><%=i.User.name%></td>
+                <td><%=i.Package.name%></td>
+                <td><%=i.totalWeight%></td>
+                <td><%=i.totalPrice%></td>
+                <td><%=i.status%></td>
+            </tr>
+            <%})%>
+        </tbody>
+    </table>
+    <div class="footer">
+        <p>© 2020 Drop N' Klin. All Rights Reserved</p>
+    </div>
+</body>
+
+</html>

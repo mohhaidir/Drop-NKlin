@@ -38,9 +38,7 @@
     <% data.forEach(i => { %>
     <a style="text-decoration:none" href="/order/<%=i.id%>">
       <div class="card">
-        <img
-          src="https://images.pexels.com/photos/4414/black-and-white-clean-housework-launderette.jpg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-          class="card-img-top">
+        <img src="/<%= i.urlIMG %>" class="img-fluid">
         <div class="card-body">
           <h5 class="btn btn-success"><%=i.name%></h5>
           <p class="card-text">We have <%=i.name%> package</p>

@@ -46,7 +46,7 @@
     </div>
     <div class="form-group">
       <label for="name">Name</label>
-      <input type="text" class="form-control" name="name" value="<%=data.user.name%>" readonly>
+      <input type="text" class="form-control" name="name" value="<%if(error!==null){%><%=data.name%><%}else {%><%=data.user.name%>><%}%>" readonly>
     </div>
     <div class="form-group">
       <label for="package">Package</label>
@@ -65,15 +65,15 @@
       <label for="totalPrice">Total</label>
       <input type="text" class="form-control" name="totalPrice" id="totalPrice" readonly>
     </div>
-    <input type="hidden" class="form-control" name="UserId" value="<%=data.user.id%>">
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <input type="hidden" class="form-control" name="UserId" value="<%if(error!==null){%><%=data.UserId%><%}else {%><%=data.user.id%><%}%>">
+    <button type="submit" class="btn btn-dark" style="margin-left: 48%">Submit</button>
     <div class="footer">
       <p>© 2020 Drop N' Klin. All Rights Reserved</p>
     </div>
   </form>
   <script>
     function total(berat) {
-      document.getElementById("totalPrice").value = berat * <%= data.package.price %>;
+      document.getElementById("totalPrice").value = `${berat * '<%=data.package.price%>'}`;
     }
   </script>
 </body>
