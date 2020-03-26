@@ -87,6 +87,19 @@
         }
     </style>
     <%- include('partials/navbar')%>
+    <% if (error){ %>
+    <div style="float:inline-start; text-align: center">
+        <div class="alert alert-light" role="alert;">
+            <%- "Please fill Username or Password correctly!" %>
+        </div>
+    </div>
+    <% } else { %>
+    <div style="float:inherit; text-align: left">
+        <div class="alert alert-light" role="alert;">
+            <%- "Please fill all requirement input data!" %>
+        </div>
+    </div>
+    <% } %>
 </head>
 
 <body>
@@ -98,7 +111,7 @@
             </div>
         </div>
         <div class="main">
-            <div class="col-md-6 col-sm-12">
+            <div class="col-md-6 col-sm-11">
                 <form action="/login" method="POST">
                     <div class="login-form">
                         <div class="form-group">

@@ -71,7 +71,7 @@ class ControllerUser {
     }
 
     static findPackagesUser(req, res) {
-        Package.findAll()
+        Package.findAll({ order: [['duration', 'DESC']] })
             .then((result) => {
                 res.render('list', { data: result })
             }).catch((err) => {
@@ -118,14 +118,14 @@ class ControllerUser {
         Users.findOne({ where: { username: req.session.username } })
             .then((result) => {
                 id = result.id;
-                return Transaction.findAll({ where: { UserId: id , status: 'On Process'}, include: [Package, Users] })
+                return Transaction.findAll({ where: { UserId: id, status: 'On Process' }, include: [Package, Users] })
             })
             .then((result) => {
                 data = result;
-                return Transaction.findAll({ where: { UserId: id , status: 'Done'}, include: [Package, Users] })
+                return Transaction.findAll({ where: { UserId: id, status: 'Done' }, include: [Package, Users] })
             })
             .then((result) => {
-                res.render('myorder', { data , data2:result})
+                res.render('myorder', { data, data2: result })
             })
             .catch((err) => {
                 res.send(err)

@@ -45,8 +45,8 @@
                 <td><%=i.estimateDate%></td>
                 <td><%=i.User.name%></td>
                 <td><%=i.Package.name%></td>
-                <td><%=i.totalWeight%></td>
-                <td><%=i.totalPrice%></td>
+                <td><%=i.formatKg()%></td>
+                <td><%=i.formatRp()%></td>
                 <td><%=i.status%></td>
                 <td>
                     <a href="/admin/<%=i.id%>/status"><button class="btn btn-dark">Done</button></a>
@@ -77,8 +77,8 @@
                 <td><%=i.estimateDate%></td>
                 <td><%=i.User.name%></td>
                 <td><%=i.Package.name%></td>
-                <td><%=i.totalWeight%></td>
-                <td><%=i.totalPrice%></td>
+                <td><%=i.formatKg()%></td>
+                <td><%=i.formatRp()%></td>
                 <td><%=i.status%></td>
             </tr>
             <%})%>

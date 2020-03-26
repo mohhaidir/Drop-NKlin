@@ -44,8 +44,8 @@
             <tr>
                 <td><%=i.name%></td>
                 <td><img src="/<%=i.urlIMG%>" style="width: 50px;"></td>
-                <td><%=i.price%></td>
-                <td><%=i.duration%></td>
+                <td><%=i.formatRp()%></td>
+                <td><%=i.formatDay()%></td>
                 <td>
                     <a href="/admin/list/edit/<%=i.id%>"><button class="btn btn-dark">Edit</button></a>
                     <a href="/admin/list/delete/<%=i.id%>" onclick="return confirm('Are you sure?')">
