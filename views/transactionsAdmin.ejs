@@ -2,22 +2,31 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>List</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Transaction Admin</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+        .footer {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+            background-color: black;
+            color: lightgray;
+            text-align: center;
+        }
+    </style>
+    <%- include('partials/navbarAdmin')%>
 </head>
+
 <body>
-  <h1>Transaction Admin</h1>
-    <ul>
-        <li><a href="/">home</a></li>
-        <li><a href="/admin/list">list</a></li>
-        <li><a href="/admin/transaction">transaction</a></li>
-        <li><a href="/logout">logout</a></li>
-    </ul>
-    <h3>OnGoing</h3>
-    <table>
-        <thead>
+    <table class="table" border="1">
+        <thead class="thead thead-dark">
             <tr>
                 <th>Date Transaction</th>
                 <th>Estimate Date</th>
@@ -30,7 +39,7 @@
             </tr>
         </thead>
         <tbody>
-        <% data.forEach(i => { %>
+            <% data.forEach(i => { %>
             <tr>
                 <td><%=i.dateTransaction%></td>
                 <td><%=i.estimateDate%></td>
@@ -39,14 +48,18 @@
                 <td><%=i.totalWeight%></td>
                 <td><%=i.totalPrice%></td>
                 <td><%=i.status%></td>
-                <td><a href="/admin/<%=i.id%>/status">Done</a></td>
+                <td>
+                    <a href="/admin/<%=i.id%>/status"><button class="btn btn-dark">Done</button></a>
+                </td>
             </tr>
-        <%})%>
+            <%})%>
         </tbody>
     </table>
-    <h3>Done</h3>
-    <table>
-        <thead>
+    <div style="text-align: center; margin-top: 150px">
+        <h3> Done List Transaction </h3>
+    </div>
+    <table class="table" border="1">
+        <thead class="thead thead-dark">
             <tr>
                 <th>Date Transaction</th>
                 <th>Estimate Date</th>
@@ -58,7 +71,7 @@
             </tr>
         </thead>
         <tbody>
-        <% data2.forEach(i => { %>
+            <% data2.forEach(i => { %>
             <tr>
                 <td><%=i.dateTransaction%></td>
                 <td><%=i.estimateDate%></td>
@@ -68,9 +81,12 @@
                 <td><%=i.totalPrice%></td>
                 <td><%=i.status%></td>
             </tr>
-        <%})%>
+            <%})%>
         </tbody>
     </table>
+    <div class="footer">
+        <p>© 2020 Drop N' Klin. All Rights Reserved</p>
+    </div>
 </body>
 
 </html>

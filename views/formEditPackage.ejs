@@ -2,39 +2,55 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Edit Package Admin</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit Package Admin</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+        .footer {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+            background-color: black;
+            color: lightgray;
+            text-align: center;
+        }
+    </style>
+    <%- include('partials/navbarAdmin')%>
 </head>
+
 <body>
-    <%= JSON.stringify(data) %> 
-    <%= JSON.stringify(error) %> 
-  <h1>Edit Package Admin</h1>
-    <ul>
-        <li><a href="/">home</a></li>
-        <li><a href="/admin/list">list</a></li>
-        <li><a href="/admin/transaction">transaction</a></li>
-        <li><a href="/logout">logout</a></li>
-    </ul>
-    <form action="" method="POST" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" name="name" <%if(data!==null){ %>value="<%=data.name%>"<%}%>>
-        </div>
-        <div class="form-group">
-            <label for="price">Price</label>
-            <input type="text" class="form-control" name="price" <%if(data!==null){ %>value="<%=data.price%>"<%}%>>
-        </div>
-        <div class="form-group">
-            <label for="duration">Duration</label>
-            <input type="text" class="form-control" name="duration"  <%if(data!==null){ %>value="<%=data.duration%>"<%}%>>
-        </div>
-        <div class="form-group">
-            <input type="file" name="myImg"  <%if(data!==null){ %>value="<%=data.urlIMG%>"<%}%>>
-        </div>
-        <button type="submit">Edit</button>
-    </form>
+    <div>
+        <form action="" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" name="name" <%if(data!==null){ %>value="<%=data.name%>" <%}%>>
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="text" class="form-control" name="price" <%if(data!==null){ %>value="<%=data.price%>"
+                    <%}%>>
+            </div>
+            <div class="form-group">
+                <label for="duration">Duration</label>
+                <input type="text" class="form-control" name="duration"  <%if(data!==null){ %>value="<%=data.duration%>" <%}%>>
+            </div>
+            <div class="form-group" style="margin-left: 44%">
+                <input type="file" name="myImg"  <%if(data!==null){ %>value="<%=data.urlIMG%>" <%}%>>
+            </div>
+            <div style="text-align: center">
+                <button type="submit">Edit</button>
+            </div>
+        </form>
+    </div>
+    <div class="footer">
+        <p>© 2020 Drop N' Klin. All Rights Reserved</p>
+    </div>
 </body>
 
 </html>

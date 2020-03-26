@@ -1,41 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyOrder</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <%- include('partials/navbarUser')%>
+    <style>
+        .footer {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+            background-color: black;
+            color: lightgray;
+            text-align: center;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>INI My Order USER</h1>
-    <ul>
-        <li><a href="/">home</a></li>
-        <li><a href="/list">list</a></li>
-        <li><a href="/myorder">myorder</a></li>
-        <li><a href="/logout">logout</a></li>
-    </ul>
-    <table>
-        <thead>
+    <table class="table">
+        <thead class="thead thead-dark">
             <tr>
-                <th>date</th>
-                <th>estimate</th>
-                <th>package</th>
-                <th>weight</th>
-                <th>total price</th>
-                <th>status</th>
+                <th scope="col">Date</th>
+                <th scope="col">Estimate</th>
+                <th scope="col">Package</th>
+                <th scope="col">Weight</th>
+                <th scope="col">Total Price</th>
+                <th scope="col">Status</th>
             </tr>
         </thead>
         <tbody>
             <% data.forEach(i => { %>
-                <tr>
-                    <td><%=i.dateTransaction%></td>
-                    <td><%=i.estimateDate%></td>
-                    <td><%=i.Package.name%></td>
-                    <td><%=i.totalWeight%></td>
-                    <td><%=i.totalPrice%></td>
-                    <td><%=i.status%></td>
-                </tr>
-            <% }) %> 
+            <tr>
+                <td><%=i.dateTransaction%></td>
+                <td><%=i.estimateDate%></td>
+                <td><%=i.Package.name%></td>
+                <td><%=i.totalWeight%></td>
+                <td><%=i.totalPrice%></td>
+                <td><%=i.status%></td>
+            </tr>
+            <% }) %>
         </tbody>
     </table>
+    <div class="footer">
+        <p>© 2020 Drop N' Klin. All Rights Reserved</p>
+    </div>
 </body>
+
 </html>

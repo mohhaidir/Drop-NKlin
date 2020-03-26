@@ -1,17 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOMEADMIN</title>
+    <title>HomeUser</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+        .footer {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+            background-color: black;
+            color: lightgray;
+            text-align: center;
+        }
+    </style>
+    <%- include('partials/navbarAdmin')%>
 </head>
+
 <body>
-    <h1>INI HOME ADMIN</h1>
-    <ul>
-        <li><a href="/">home</a></li>
-        <li><a href="/admin/list">list</a></li>
-        <li><a href="/admin/transaction">transaction</a></li>
-        <li><a href="/logout">logout</a></li>
-    </ul>
+    <div style="text-align: center">
+        <img
+            src="https://us.123rf.com/450wm/drnn/drnn2003/drnn200300115/141948025-welcome-back-red-speech-bubble-isolated-icon.jpg?ver=6">
+    </div>
+    <div class="footer">
+        <p>© 2020 Drop N' Klin. All Rights Reserved</p>
+    </div>
 </body>
+
 </html>
