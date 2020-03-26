@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FormOrder</title>
+</head>
+<body >
+    <h1>Form Order</h1>
+  <ul>
+    <li><a href="/">home</a></li>
+    <li><a href="/list">list</a></li>
+    <li><a href="/myorder">myorder</a></li>
+    <li><a href="/logout">logout</a></li>
+  </ul>
+  <%= JSON.stringify(data) %>
+  <%= JSON.stringify(error) %>
+  <form action="order/" method="POST">
+    <div class="form-group">
+      <label for="dateTransaction">Date</label>
+      <input type="text" class="form-control" name="dateTransaction" id="dateTransaction" readonly value="<%= new Date().toISOString().slice(0, 10); %>">
+    </div>
+    <div class="form-group">
+      <label for="estimateDate">Estimate Date</label>
+      <input type="text" class="form-control" name="estimateDate" id="estimateDate" readonly value="<%= new Date(new Date().setDate(new Date().getDate()+data.package.duration)).toISOString().slice(0, 10); %>">
+    </div>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" name="name" value="<%=data.user.name%>" readonly>
+    </div>
+    <div class="form-group">
+      <label for="package">Package</label>
+      <input type="text" class="form-control" name="package" value="<%=data.package.name%>" readonly>
+      <input type="hidden" class="form-control" name="PackageId" value="<%=data.package.id%>">
+    </div>
+    <div class="form-group">
+      <label for="price">Price per KG</label>
+      <input type="text" class="form-control" name="price" value="<%=data.package.price%>" readonly>
+    </div>
+    <div class="form-group">
+      <label for="totalWeight">Weight</label>
+      <input type="number" class="form-control" name="totalWeight" min="1" max="10" onchange="total(this.value)">
+    </div>
+    <div class="form-group">
+      <label for="totalPrice">Total</label>
+      <input type="text" class="form-control" name="totalPrice" id="totalPrice" readonly>
+    </div>
+    <input type="hidden" class="form-control" name="UserId" value="<%=data.user.id%>">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <script>
+      function total (berat){
+          document.getElementById("totalPrice").value = berat*<%=data.package.price%>;
+      }
+  </script>
+</body>
+</html>

@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-const { Users } = require('../models');
+const { Users, Package, Transaction } = require('../models');
 const checkPass = require('../helpers/checkPass');
 class ControllerUser {
     static formlogin(req, res){
@@ -70,30 +69,60 @@ class ControllerUser {
                 res.render('register', {data:req.body, error})
             });
     }
-=======
-const { Package, Users } = require('../models')
 
-class ControllerUser {
+    static findPackagesUser(req, res){
+        Package.findAll()
+        .then((result) => {
+            res.render('list', {data:result})
+        }).catch((err) => {
+            res.send(err)
+        });
+    }
 
-  static listPackage(req, res) {
-    Package.findAll()
-      .then(result => {
-        res.render('../views/user/listUser', { item: result })
-      })
-      .catch(error => {
-        res.send(error)
-      })
-  }
-  // <<-- munculin list item, harga (reguler, express, santuy)
-  static cart(req, res) {
-    res.render('../views/user/cart')
-  }
-  // <<-- munculin cart / invoice belanjaan user
+    static formOrderUser(req, res){
+        let data = {};
+        Package.findByPk(req.params.id)
+        .then((result) => {
+            data.package = result;
+            return Users.findOne({where:{username:req.session.username}})
+        })
+        .then((result) => {
+            data.user = result;
+            res.render('formOrder', {data, error:null});
+        })
+        .catch((err) => {
+            res.send(err)
+        });
+    }
 
-  static login(req, res) {
-    res.render('loginForm')
-  }
->>>>>>> 081eca91a8a8ed534821c19939391ce7c52f45af
+    static OrderUser(req, res){
+        Transaction.create({
+            dateTransaction: req.body.dateTransaction,
+            estimateDate: req.body.estimateDate,
+            totalWeight: req.body.totalWeight,
+            totalPrice: req.body.totalPrice,
+            UserId: req.body.UserId,
+            PackageId: req.body.PackageId
+        })
+        .then(result => {
+            res.redirect('/myorder');
+        })
+        .catch(err => {
+            res.send(err);
+        })
+    }
+
+    static MyOrder(req, res){
+        Users.findOne({where:{username:req.session.username}})
+        .then((result) => {
+            return Transaction.findAll({where:{UserId:result.id}, include: [Package, Users]})
+        })
+        .then((result) => {
+            res.render('myorder', {data:result})
+        }).catch((err) => {
+            res.send(err)
+        });
+    }
 }
 
 module.exports = ControllerUser

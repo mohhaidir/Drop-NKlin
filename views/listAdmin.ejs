@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>List</title>
+</head>
+<body>
+  <h1>List Admin</h1>
+    <ul>
+        <li><a href="/">home</a></li>
+        <li><a href="/admin/list">list</a></li>
+        <li><a href="/admin/transaction">transaction</a></li>
+        <li><a href="/logout">logout</a></li>
+    </ul>
+    <a href="/admin/list/add"><button class="btn btn-primary">Add</button></a>
+    <table>
+        <thead>
+            <tr>
+                <th>Package</th>
+                <th>Price per KG</th>
+                <th>Duration</th>
+                <th>Option</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.forEach(i => { %>
+                <tr>
+                  <th><%=i.name%></th>
+                  <th><%=i.price%></th>
+                  <th><%=i.duration%></th>
+                  <th>
+                      <a href="/admin/list/edit/<%=i.id%>"><button class="btn btn-primary">Edit</button></a>
+                      <a href="/admin/list/delete/<%=i.id%>" onclick="return confirm('Are you sure?')"><button class="btn btn-danger">Delete</button></a>
+                  </th>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+
+</html>

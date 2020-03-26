@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyOrder</title>
+</head>
+<body>
+    <h1>INI My Order USER</h1>
+    <ul>
+        <li><a href="/">home</a></li>
+        <li><a href="/list">list</a></li>
+        <li><a href="/myorder">myorder</a></li>
+        <li><a href="/logout">logout</a></li>
+    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>date</th>
+                <th>estimate</th>
+                <th>package</th>
+                <th>weight</th>
+                <th>total price</th>
+                <th>status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.forEach(i => { %>
+                <tr>
+                    <td><%=i.dateTransaction%></td>
+                    <td><%=i.estimateDate%></td>
+                    <td><%=i.Package.name%></td>
+                    <td><%=i.totalWeight%></td>
+                    <td><%=i.totalPrice%></td>
+                    <td><%=i.status%></td>
+                </tr>
+            <% }) %> 
+        </tbody>
+    </table>
+</body>
+</html>
