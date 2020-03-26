@@ -20,6 +20,7 @@
         <thead>
             <tr>
                 <th>Package</th>
+                <th>Image</th>
                 <th>Price per KG</th>
                 <th>Duration</th>
                 <th>Option</th>
@@ -28,13 +29,14 @@
         <tbody>
             <% data.forEach(i => { %>
                 <tr>
-                  <th><%=i.name%></th>
-                  <th><%=i.price%></th>
-                  <th><%=i.duration%></th>
-                  <th>
+                  <td><%=i.name%></td>
+                  <td><img src="/<%=i.urlIMG%>" style="width: 50px;"></td>
+                  <td><%=i.price%></td>
+                  <td><%=i.duration%></td>
+                  <td>
                       <a href="/admin/list/edit/<%=i.id%>"><button class="btn btn-primary">Edit</button></a>
                       <a href="/admin/list/delete/<%=i.id%>" onclick="return confirm('Are you sure?')"><button class="btn btn-danger">Delete</button></a>
-                  </th>
+                  </td>
                 </tr>
             <% }) %>
         </tbody>

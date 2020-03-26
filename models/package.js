@@ -8,9 +8,30 @@ module.exports = (sequelize, DataTypes) => {
   }
 
   Package.init({
-    name: DataTypes.STRING,
-    price: DataTypes.INTEGER,
-    duration: DataTypes.INTEGER,
+    name: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: "Name harus diisi!"
+        }
+      }
+    },
+    price: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {
+          msg: "Price harus diisi!"
+        }
+      }
+    },
+    duration: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {
+          msg: "Duration harus diisi!"
+        }
+      }
+    },
     urlIMG: DataTypes.STRING
   }, { sequelize });
 

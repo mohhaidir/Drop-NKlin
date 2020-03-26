@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>List</title>
+</head>
+<body>
+  <h1>Transaction Admin</h1>
+    <ul>
+        <li><a href="/">home</a></li>
+        <li><a href="/admin/list">list</a></li>
+        <li><a href="/admin/transaction">transaction</a></li>
+        <li><a href="/logout">logout</a></li>
+    </ul>
+    <h3>OnGoing</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Date Transaction</th>
+                <th>Estimate Date</th>
+                <th>Customer</th>
+                <th>Package</th>
+                <th>Total Weight</th>
+                <th>Total Price</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% data.forEach(i => { %>
+            <tr>
+                <td><%=i.dateTransaction%></td>
+                <td><%=i.estimateDate%></td>
+                <td><%=i.User.name%></td>
+                <td><%=i.Package.name%></td>
+                <td><%=i.totalWeight%></td>
+                <td><%=i.totalPrice%></td>
+                <td><%=i.status%></td>
+                <td><a href="/admin/<%=i.id%>/status">Done</a></td>
+            </tr>
+        <%})%>
+        </tbody>
+    </table>
+    <h3>Done</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Date Transaction</th>
+                <th>Estimate Date</th>
+                <th>Customer</th>
+                <th>Package</th>
+                <th>Total Weight</th>
+                <th>Total Price</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% data2.forEach(i => { %>
+            <tr>
+                <td><%=i.dateTransaction%></td>
+                <td><%=i.estimateDate%></td>
+                <td><%=i.User.name%></td>
+                <td><%=i.Package.name%></td>
+                <td><%=i.totalWeight%></td>
+                <td><%=i.totalPrice%></td>
+                <td><%=i.status%></td>
+            </tr>
+        <%})%>
+        </tbody>
+    </table>
+</body>
+
+</html>
