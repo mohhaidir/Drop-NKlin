@@ -1,32 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <!-- Standard Meta -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <!-- Site Properties -->
+    <title>Bootstrap 4 Register Form</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        @import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+
+        .register-block {
+            background: #DE6262;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to bottom, #3f4c6b, #3f4c6b);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to bottom, #3f4c6b, #3f4c6b);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            float: left;
+            width: 100%;
+            padding: 150px 0;
+        }
+
+        .banner-sec {
+            background: url(https://images.pexels.com/photos/325876/pexels-photo-325876.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500) no-repeat bottom;
+            background-size: cover;
+            min-height: 500px;
+            border-radius: 0 10px 10px 0;
+            padding: 0;
+        }
+
+        .container {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 15px 20px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-inner {
+            border-radius: 0 10px 10px 0;
+        }
+
+        .carousel-caption {
+            text-align: left;
+            left: 5%;
+        }
+
+        .register-sec {
+            padding: 50px 30px;
+            position: relative;
+        }
+
+        .register-sec .copy-text {
+            position: absolute;
+            width: 80%;
+            bottom: 20px;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .register-sec .copy-text i {
+            color: #FEB58A;
+        }
+
+        .register-sec .copy-text a {
+            color: #E36262;
+        }
+
+        .register-sec h2 {
+            margin-bottom: 30px;
+            font-weight: 800;
+            font-size: 30px;
+            color: #3f4c6b;
+        }
+
+        .register-sec h2:after {
+            content: " ";
+            width: 100px;
+            height: 5px;
+            background: #3f4c6b;
+            display: block;
+            margin-top: 20px;
+            border-radius: 3px;
+            margin-left: auto;
+            margin-right: auto
+        }
+
+        .btn-register {
+            background: #3f4c6b;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .banner-text {
+            width: 70%;
+            position: absolute;
+            bottom: 40px;
+            padding-left: 20px;
+        }
+
+        .banner-text h2 {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .banner-text h2:after {
+            content: " ";
+            width: 100px;
+            height: 5px;
+            background: #FFF;
+            display: block;
+            margin-top: 20px;
+            border-radius: 3px;
+        }
+
+        .banner-text p {
+            color: #fff;
+        }
+
+        .footer {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+            background-color: black;
+            color: lightgray;
+            text-align: center;
+            overflow: visible;
+        }
+    </style>
+    <%- include('partials/navbar')%>
 </head>
+
 <body>
-    <%= JSON.stringify(data) %> 
-    <%= JSON.stringify(error) %> 
-    <form action="/register" method="POST">
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" name="name">
-        </div>
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" name="username">
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" name="password">
-        </div>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="text" name="email">
-        </div>
-        <button type="submit" class="btn btn-primary">Register</button>
-        <button type="reset">Clear</button>
-    </form>
+    <section class="register-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 register-sec">
+                    <h2 class="text-center">Register Now</h2>
+                    <form action="/register" method="POST" class="register-form">
+                        <div class="form-group">
+                            <label class="text-uppercase">Name</label>
+                            <input name="name" type="name" class="form-control" placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label class="text-uppercase">Username</label>
+                            <input name="username" type="text" class="form-control" placeholder="john10">
+
+                        </div>
+                        <div class="form-group">
+                            <label class="text-uppercase">Password</label>
+                            <input name="password" type="password" class="form-control" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <label class="text-uppercase">Email</label>
+                            <input name="email" type="email" class="form-control" placeholder="you@gmail.com">
+                        </div>
+
+                        <div class="form-check">
+                            <button type="submit" class="btn btn-register float-right">Register</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-8 banner-sec"></div>
+            </div>
+    </section>
+    <div class="footer">
+        <p>© 2020 Drop N' Klin. All Rights Reserved</p>
+    </div>
 </body>
+
 </html>

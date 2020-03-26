@@ -6,21 +6,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>List</title>
-</head>
-<body>
-  <h1>List</h1>
-  <ul>
-    <li><a href="/">home</a></li>
-    <li><a href="/list">list</a></li>
-    <li><a href="/myorder">myorder</a></li>
-    <li><a href="/logout">logout</a></li>
-  </ul>
+  <%- include('partials/navbarUser')%>
+  <style>
+    a {
+      color: black;
+      text-decoration: none;
+    }
 
-  <ol>
+    a:hover {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .footer {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 50px;
+      background-color: black;
+      color: lightgray;
+      text-align: center;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card-deck">
     <% data.forEach(i => { %>
-      <li><a href="/order/<%=i.id%>"><%=i.name%></a></li>
-    <% }) %>
-  </ol>
+    <a style="text-decoration:none" href="/order/<%=i.id%>">
+      <div class="card">
+        <img
+          src="https://images.pexels.com/photos/4414/black-and-white-clean-housework-launderette.jpg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+          class="card-img-top">
+        <div class="card-body">
+          <h5 class="btn btn-success"><%=i.name%></h5>
+          <p class="card-text">We have <%=i.name%> package</p>
+          <p class="card-text">Finished in <%=i.duration%> Days</p>
+          <p class="card-text">Price : Rp. <%=i.price%>/Kg</p>
+        </div>
+    </a>
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+  </div>
+  <% }) %>
+  </div>
+
+  <div class="footer">
+    <p>© 2020 Drop N' Klin. All Rights Reserved</p>
+  </div>
 </body>
 
 </html>

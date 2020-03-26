@@ -1,17 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOMEADMIN</title>
+    <title>HomeUser</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+        .footer {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+            background-color: black;
+            color: lightgray;
+            text-align: center;
+        }
+    </style>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand">Drop-N'Klin</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/list">List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/transaction">Data Transaction</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Log Out</a>
+                </li>
+            </ul>
+            <span class="navbar-text">
+            </span>
+        </div>
+    </nav>
 </head>
+
 <body>
-    <h1>INI HOME ADMIN</h1>
-    <ul>
-        <li><a href="/">home</a></li>
-        <li><a href="/admin/list">list</a></li>
-        <li><a href="/admin/transaction">transaction</a></li>
-        <li><a href="/logout">logout</a></li>
-    </ul>
+    <div class="footer">
+        <p>© 2020 Drop N' Klin. All Rights Reserved</p>
+    </div>
 </body>
+
 </html>
